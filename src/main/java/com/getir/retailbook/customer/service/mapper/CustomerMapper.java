@@ -1,8 +1,10 @@
-package com.getir.retailbook.service.mapper;
+package com.getir.retailbook.customer.service.mapper;
 
-import com.getir.retailbook.dto.CustomerDto;
-import com.getir.retailbook.model.Customer;
+import com.getir.retailbook.customer.dto.CustomerDto;
+import com.getir.retailbook.customer.model.Customer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerMapper implements EntityMapper {
 
     @Override

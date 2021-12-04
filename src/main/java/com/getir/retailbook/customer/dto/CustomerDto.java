@@ -1,4 +1,4 @@
-package com.getir.retailbook.dto;
+package com.getir.retailbook.customer.dto;
 
 
 public class CustomerDto {

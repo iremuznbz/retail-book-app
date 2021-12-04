@@ -1,13 +1,13 @@
-package com.getir.retailbook.model;
+package com.getir.retailbook.customer.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("customers")
+@Document("customer")
 public class Customer {
 
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String surname;
 
@@ -16,11 +16,11 @@ public class Customer {
         this.surname = surname;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
