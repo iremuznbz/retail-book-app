@@ -1,4 +1,4 @@
-package com.getir.retailbook.service.impl.customer;
+package com.getir.retailbook.service.customer.impl;
 
 import com.getir.retailbook.dao.customer.CustomerDao;
 import com.getir.retailbook.dto.customer.CustomerDto;

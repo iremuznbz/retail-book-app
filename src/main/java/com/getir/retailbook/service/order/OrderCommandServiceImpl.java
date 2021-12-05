@@ -1,10 +1,9 @@
-package com.getir.retailbook.service.impl.order;
+package com.getir.retailbook.service.order;
 
 import com.getir.retailbook.dto.order.OrderDto;
 import com.getir.retailbook.model.order.Order;
 import com.getir.retailbook.repository.order.OrderRepository;
 import com.getir.retailbook.service.mapper.OrderMapper;
-import com.getir.retailbook.service.order.OrderCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
