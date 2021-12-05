@@ -1,20 +1,21 @@
-package com.getir.retailbook.customer.model;
+package com.getir.retailbook.model.customer;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotNull;
 
 @Document("customer")
 public class Customer {
 
     @Id
     private String id;
-    private String name;
-    private String surname;
 
-    public Customer(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-    }
+    @NotNull
+    private String name;
+
+    @NotNull
+    private String surname;
 
     public String getId() {
         return id;
@@ -39,4 +40,5 @@ public class Customer {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
 }

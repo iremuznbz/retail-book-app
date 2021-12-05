@@ -1,6 +1,6 @@
-package com.getir.retailbook.customer.service;
+package com.getir.retailbook.service.customer;
 
-import com.getir.retailbook.customer.dto.CustomerDto;
+import com.getir.retailbook.dto.customer.CustomerDto;
 
 public interface CustomerCommandService {
     public String createCustomer(CustomerDto customerDto);
