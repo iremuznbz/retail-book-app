@@ -1,5 +1,6 @@
 package com.getir.retailbook.order;
 
+import com.getir.retailbook.BaseEntity;
 import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.order.dto.Item;
 import org.springframework.data.annotation.Id;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document("order")
-public class OrderEntity {
+public class OrderEntity extends BaseEntity {
     @Id
     private String id;
 

@@ -1,19 +1,14 @@
 package com.getir.retailbook.order.dto;
 
-import com.getir.retailbook.customer.dto.CustomerDto;
+import java.time.LocalDate;
+import java.util.List;
 
 public class OrderDto {
 
     private String id;
-    private CustomerDto customerDto;
-
-    public OrderDto( CustomerDto customerDto) {
-        this(null, customerDto);
-    }
-
-    public OrderDto(String id, CustomerDto customerDto) {
-        this.customerDto = customerDto;
-    }
+    private String customerid;
+    private List<Item> books;
+    private LocalDate createdAt;
 
     public String getId() {
         return id;
@@ -23,12 +18,28 @@ public class OrderDto {
         this.id = id;
     }
 
-    public CustomerDto getCustomerDto() {
-        return customerDto;
+    public String getCustomerid() {
+        return customerid;
     }
 
-    public void setCustomerDto(CustomerDto customerDto) {
-        this.customerDto = customerDto;
+    public void setCustomerid(String customerid) {
+        this.customerid = customerid;
+    }
+
+    public List<Item> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Item> books) {
+        this.books = books;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

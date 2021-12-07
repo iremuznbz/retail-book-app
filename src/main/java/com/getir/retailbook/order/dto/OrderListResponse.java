@@ -6,10 +6,6 @@ import java.util.List;
 public class OrderListResponse implements Serializable {
     private List<OrderDto> orderList;
 
-    public OrderListResponse(List<OrderDto> orderDtoList) {
-        orderList = orderDtoList;
-    }
-
     public List<OrderDto> getOrderList() {
         return orderList;
     }

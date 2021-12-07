@@ -1,17 +1,29 @@
 package com.getir.retailbook.order.dto;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 public class OrderCreateRequest {
 
-    @NotNull
-    private OrderDto orderDto;
+    @NotBlank
+    private String customerId;
 
-    public OrderDto getOrderDto() {
-        return orderDto;
+    @NotBlank
+    private List<Item> books;
+
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setOrderDto(OrderDto orderDto) {
-        this.orderDto = orderDto;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public List<Item> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Item> books) {
+        this.books = books;
     }
 }
