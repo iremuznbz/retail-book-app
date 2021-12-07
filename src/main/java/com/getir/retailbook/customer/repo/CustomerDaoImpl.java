@@ -1,5 +1,7 @@
-package com.getir.retailbook.customer;
+package com.getir.retailbook.customer.repo;
 
+import com.getir.retailbook.customer.CustomerEntity;
+import com.getir.retailbook.customer.CustomerMapper;
 import com.getir.retailbook.customer.dto.CustomerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

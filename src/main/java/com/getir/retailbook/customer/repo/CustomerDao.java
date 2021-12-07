@@ -1,4 +1,4 @@
-package com.getir.retailbook.customer;
+package com.getir.retailbook.customer.repo;
 
 import com.getir.retailbook.customer.dto.CustomerDto;
 import org.springframework.cache.annotation.Cacheable;

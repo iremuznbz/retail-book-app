@@ -1,5 +1,6 @@
 package com.getir.retailbook.book;
 
+import com.getir.retailbook.book.dto.BookCreateRequest;
 import com.getir.retailbook.book.dto.BookDto;
 import com.getir.retailbook.util.EntityMapper;
 import org.springframework.stereotype.Component;
@@ -27,5 +28,13 @@ public class BookMapper implements EntityMapper {
         bookDto.setName(b.getName());
         bookDto.setStock(b.getStock());
         return bookDto;
+    }
+
+    public BookDto fromRequestToDto(BookCreateRequest request) {
+        BookDto b = new BookDto();
+        b.setName(request.getName());
+        b.setAuthor(request.getAuthor());
+        b.setStock(request.getStock());
+        return b;
     }
 }

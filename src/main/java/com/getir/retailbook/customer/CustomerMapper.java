@@ -1,5 +1,6 @@
 package com.getir.retailbook.customer;
 
+import com.getir.retailbook.customer.dto.CustomerCreateRequest;
 import com.getir.retailbook.customer.dto.CustomerDto;
 import com.getir.retailbook.util.EntityMapper;
 import org.springframework.stereotype.Component;
@@ -24,4 +25,8 @@ public class CustomerMapper implements EntityMapper {
     }
 
 
+    public CustomerDto fromCreateRequestToDto(CustomerCreateRequest req) {
+        CustomerDto dto = new CustomerDto(req.getName(), req.getSurname(), req.getEmail());
+        return dto;
+    }
 }

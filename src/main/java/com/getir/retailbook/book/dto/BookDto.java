@@ -1,6 +1,5 @@
 package com.getir.retailbook.book.dto;
 
-import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 
 public class BookDto implements Serializable {
@@ -8,8 +7,6 @@ public class BookDto implements Serializable {
     private String id;
     private String name;
     private String author;
-
-    @PositiveOrZero
     private Integer stock;
 
     public String getId() {

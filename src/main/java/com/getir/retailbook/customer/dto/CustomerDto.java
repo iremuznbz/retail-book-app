@@ -15,11 +15,11 @@ public class CustomerDto implements Serializable {
     public CustomerDto(){
 
     }
-    public CustomerDto(String name, String surname) {
-        this(null, name, surname);
+    public CustomerDto(String name, String surname, String email) {
+        this(null, name, surname, email);
     }
 
-    public CustomerDto(String id, String name, String surname) {
+    public CustomerDto(String id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;

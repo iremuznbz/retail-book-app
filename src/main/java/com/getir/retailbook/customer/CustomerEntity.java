@@ -1,12 +1,13 @@
 package com.getir.retailbook.customer;
 
+import com.getir.retailbook.BaseEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
 @Document("customer")
-public class CustomerEntity {
+public class CustomerEntity extends BaseEntity {
 
     @Id
     private String id;
@@ -16,6 +17,9 @@ public class CustomerEntity {
 
     @NotNull
     private String surname;
+
+    @NotNull
+    private String email;
 
     public String getId() {
         return id;
@@ -41,4 +45,11 @@ public class CustomerEntity {
         this.surname = surname;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

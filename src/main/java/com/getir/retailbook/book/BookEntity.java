@@ -1,12 +1,13 @@
 package com.getir.retailbook.book;
 
+import com.getir.retailbook.BaseEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
 @Document("book")
-public class BookEntity {
+public class BookEntity extends BaseEntity {
     @Id
     private String id;
 

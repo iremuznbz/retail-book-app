@@ -19,9 +19,12 @@ public class BookController {
     @Autowired
     private BookQueryService bookQueryService;
 
+    @Autowired
+    private BookMapper bookMapper;
+
     @PostMapping
     public String createBook(@RequestBody BookCreateRequest request){
-        bookCommandService.createBook(request.getBookDto());
+        bookCommandService.createBook(bookMapper.fromRequestToDto(request));
         return null;
     }
 

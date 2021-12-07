@@ -1,6 +1,6 @@
 package com.getir.retailbook.customer.service;
 
-import com.getir.retailbook.customer.CustomerDao;
+import com.getir.retailbook.customer.repo.CustomerDao;
 import com.getir.retailbook.customer.dto.CustomerDto;
 import com.getir.retailbook.order.dto.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
