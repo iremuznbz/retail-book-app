@@ -34,6 +34,8 @@ public class CustomerController {
     @GetMapping("/orders/{id}")
     public OrderListResponse getCustomerOrders(@RequestParam CustomerOrderListRequest customerOrderListRequest){
         List<OrderDto> l = customerQueryService.findOrderListByCustomerID(customerOrderListRequest.toCustomerId());
-        return new OrderListResponse(l);
+        OrderListResponse resp= new OrderListResponse();
+        resp.setOrderList(l);
+        return resp;
     }
 }

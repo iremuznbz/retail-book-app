@@ -29,7 +29,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderDto> listOrdersByInterval(LocalDateTime startDate, LocalDateTime endDate) {
-        List<OrderEntity> orderList = orderRepository.findByCreatedOnBetween(startDate, endDate);
+        List<OrderEntity> orderList = orderRepository.findByCreatedAtBetween(startDate, endDate);
         List<OrderDto> dtoList = new ArrayList<>();
         for(OrderEntity o : orderList)
             dtoList.add((OrderDto) orderMapper.mapToDto(o));

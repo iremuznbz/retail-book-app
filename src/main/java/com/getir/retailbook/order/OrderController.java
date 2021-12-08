@@ -1,6 +1,7 @@
 package com.getir.retailbook.order;
 
 
+import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.order.dto.OrderCreateRequest;
 import com.getir.retailbook.order.dto.OrderDto;
 import com.getir.retailbook.order.dto.OrderListResponse;
@@ -28,7 +29,12 @@ public class OrderController {
 
     @PostMapping // TODO: atomicity order yaratbook stock update et
     public String createOrder(@RequestBody OrderCreateRequest orderCreateRequest){
-        return orderCommandService.createOrder(orderMapper.fromCreateRequestToDto(orderCreateRequest));
+        try {
+            return orderCommandService.createOrder(orderMapper.fromCreateRequestToDto(orderCreateRequest));
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @GetMapping("/{orderId}")
