@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrderRepository extends MongoRepository<OrderEntity, String> {
-    List<OrderEntity> findByCreatedOnBetween(LocalDateTime startDate, LocalDateTime endDate);
+    List<OrderEntity> findByCreatedAtBetween(LocalDateTime startDate, LocalDateTime endDate);
 }
