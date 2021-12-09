@@ -1,13 +1,17 @@
 package com.getir.retailbook.order.dto;
 
+import java.math.BigDecimal;
+
 public class Item {
 
     private String bookId;
     private int quantity;
+    private BigDecimal totalAmount;
 
-    public Item(String id, Integer quantity) {
+    public Item(String id, Integer quantity, BigDecimal totalAmount) {
         this.bookId = id;
         this.quantity = quantity;
+        this.totalAmount = totalAmount;
     }
 
     public String getBookId() {
@@ -26,4 +30,11 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 }

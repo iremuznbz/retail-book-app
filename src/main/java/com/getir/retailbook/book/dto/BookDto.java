@@ -1,6 +1,7 @@
 package com.getir.retailbook.book.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class BookDto implements Serializable {
 
@@ -8,6 +9,7 @@ public class BookDto implements Serializable {
     private String name;
     private String author;
     private Integer quantity;
+    private BigDecimal amount;
 
     public String getId() {
         return id;
@@ -39,5 +41,13 @@ public class BookDto implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

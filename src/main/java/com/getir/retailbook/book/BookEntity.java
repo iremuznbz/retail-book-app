@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Document("book")
 public class BookEntity extends BaseEntity {
@@ -21,6 +22,9 @@ public class BookEntity extends BaseEntity {
 
     @NotNull
     private Integer quantity;
+
+    @NotNull
+    private BigDecimal amount;
 
     public String getId() {
         return id;
@@ -52,5 +56,13 @@ public class BookEntity extends BaseEntity {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

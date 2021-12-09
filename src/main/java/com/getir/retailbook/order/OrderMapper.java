@@ -13,6 +13,7 @@ import com.getir.retailbook.order.dto.OrderListResponse;
 import com.getir.retailbook.util.EntityMapper;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class OrderMapper implements EntityMapper {
         List<Item> items = new ArrayList<>();
         for(Item item : ((OrderDto) dto).getItems()){
             BookDto bookDto = bookQueryService.findById(item.getBookId());
-            Item i = new Item(bookDto.getId(),item.getQuantity());
+            Item i = new Item(bookDto.getId(),item.getQuantity(), bookDto.getAmount().multiply(new BigDecimal(bookDto.getQuantity())));
             items.add(i);
         }
         o.setItems(items);
