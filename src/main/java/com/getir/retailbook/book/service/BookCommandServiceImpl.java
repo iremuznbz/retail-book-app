@@ -5,6 +5,8 @@ import com.getir.retailbook.book.dto.BookDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 class BookCommandServiceImpl implements BookCommandService {
 
@@ -14,6 +16,11 @@ class BookCommandServiceImpl implements BookCommandService {
     @Override
     public String createBook(BookDto bookDto) {
        return bookDao.createBook(bookDto);
+    }
+
+    @Override
+    public void updateBooks(List<BookDto> books) {
+        bookDao.updateBooks(books);
     }
 }
 

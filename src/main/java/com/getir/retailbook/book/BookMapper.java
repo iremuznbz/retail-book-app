@@ -15,7 +15,7 @@ public class BookMapper implements EntityMapper {
         b.setId(bookDto.getId());
         b.setAuthor(bookDto.getAuthor());
         b.setName(bookDto.getName());
-        b.setStock(bookDto.getStock());
+        b.setQuantity(bookDto.getQuantity());
         return b;
     }
 
@@ -26,7 +26,7 @@ public class BookMapper implements EntityMapper {
         bookDto.setId(b.getId());
         bookDto.setAuthor(b.getAuthor());
         bookDto.setName(b.getName());
-        bookDto.setStock(b.getStock());
+        bookDto.setQuantity(b.getQuantity());
         return bookDto;
     }
 
@@ -34,7 +34,9 @@ public class BookMapper implements EntityMapper {
         BookDto b = new BookDto();
         b.setName(request.getName());
         b.setAuthor(request.getAuthor());
-        b.setStock(request.getStock());
+        b.setQuantity(request.getQuantity());
         return b;
     }
+
+
 }

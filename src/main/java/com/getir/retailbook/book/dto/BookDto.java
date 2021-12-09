@@ -7,7 +7,7 @@ public class BookDto implements Serializable {
     private String id;
     private String name;
     private String author;
-    private Integer stock;
+    private Integer quantity;
 
     public String getId() {
         return id;
@@ -33,11 +33,11 @@ public class BookDto implements Serializable {
         this.author = author;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

@@ -24,8 +24,7 @@ public class BookController {
 
     @PostMapping
     public String createBook(@RequestBody BookCreateRequest request){
-        bookCommandService.createBook(bookMapper.fromRequestToDto(request));
-        return null;
+        return bookCommandService.createBook(bookMapper.fromRequestToDto(request));
     }
 
 }

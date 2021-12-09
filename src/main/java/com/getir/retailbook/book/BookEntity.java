@@ -2,6 +2,7 @@ package com.getir.retailbook.book;
 
 import com.getir.retailbook.BaseEntity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -12,13 +13,14 @@ public class BookEntity extends BaseEntity {
     private String id;
 
     @NotNull
+    @Indexed(unique=true)
     private String name;
 
     @NotNull
     private String author;
 
     @NotNull
-    private Integer stock;
+    private Integer quantity;
 
     public String getId() {
         return id;
@@ -44,11 +46,11 @@ public class BookEntity extends BaseEntity {
         this.author = author;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
