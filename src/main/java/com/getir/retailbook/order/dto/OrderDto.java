@@ -7,7 +7,7 @@ public class OrderDto {
 
     private String id;
     private String customerid;
-    private List<Item> books;
+    private List<Item> items;
     private LocalDate createdAt;
 
     public String getId() {
@@ -26,12 +26,12 @@ public class OrderDto {
         this.customerid = customerid;
     }
 
-    public List<Item> getBooks() {
-        return books;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setBooks(List<Item> books) {
-        this.books = books;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public LocalDate getCreatedAt() {

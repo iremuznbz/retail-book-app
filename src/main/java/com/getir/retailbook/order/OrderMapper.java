@@ -1,6 +1,5 @@
 package com.getir.retailbook.order;
 
-import com.getir.retailbook.book.BookEntity;
 import com.getir.retailbook.book.BookMapper;
 import com.getir.retailbook.book.dto.BookDto;
 import com.getir.retailbook.book.service.BookQueryService;
@@ -38,13 +37,13 @@ public class OrderMapper implements EntityMapper {
         OrderEntity o = new OrderEntity();
         CustomerEntity c = (CustomerEntity) customerMapper.mapToEntity(customerQueryService.findCustomerById(orderDto.getCustomerid()));
         o.setCustomer(c);
-        List<BookEntity> bookEntities = new ArrayList<>();
-        for(Item item : ((OrderDto) dto).getBooks()){
+        List<Item> items = new ArrayList<>();
+        for(Item item : ((OrderDto) dto).getItems()){
             BookDto bookDto = bookQueryService.findById(item.getBookId());
-            bookDto.setQuantity(item.getQuantity());
-            bookEntities.add((BookEntity) bookMapper.mapToEntity(bookDto));
+            Item i = new Item(bookDto.getId(),item.getQuantity());
+            items.add(i);
         }
-        o.setBooks(bookEntities);
+        o.setItems(items);
         return o;
     }
 
@@ -53,16 +52,15 @@ public class OrderMapper implements EntityMapper {
         OrderEntity o = (OrderEntity) entity;
         OrderDto orderDto = new OrderDto();
         orderDto.setCustomerid(o.getCustomer().getId());
-        List<Item> books = new ArrayList<>();
-        o.getBooks().stream().forEach(bookEntity -> books.add(new Item(bookEntity.getId(), bookEntity.getQuantity())));
-        orderDto.setBooks(books);
+        orderDto.setItems(((OrderEntity) entity).getItems());
+        orderDto.setCreatedAt(((OrderEntity) entity).getCreatedAt().toLocalDate());
         return orderDto;
     }
 
     public OrderDto fromCreateRequestToDto(OrderCreateRequest req) {
         OrderDto dto = new OrderDto();
         dto.setCustomerid(req.getCustomerId());
-        dto.setBooks(req.getBooks());
+        dto.setItems(req.getBooks());
         return dto;
     }
 

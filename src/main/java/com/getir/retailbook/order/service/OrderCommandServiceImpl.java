@@ -40,12 +40,12 @@ public class OrderCommandServiceImpl implements OrderCommandService {
         if(c == null)
             throw new BusinessException("O001", "Cannot create order with non existing customer.");
 
-        List<BookDto> books = bookQueryService.findAllBooks(orderDto.getBooks());
+        List<BookDto> books = bookQueryService.findAllBooks(orderDto.getItems());
 
-        if(books.size() != orderDto.getBooks().size())
+        if(books.size() != orderDto.getItems().size())
             throw new BusinessException("O002", "Cannot create order for all books in the list");
 
-        for(Item i : orderDto.getBooks()){
+        for(Item i : orderDto.getItems()){
             BookDto bookDto = books.stream().filter(b -> b.getId().equals(i.getBookId())).findFirst().get();
             if (bookDto.getQuantity() - i.getQuantity() < 0)
                 throw new BusinessException("O003", "Does not have enough stock for book " + bookDto.getName());
