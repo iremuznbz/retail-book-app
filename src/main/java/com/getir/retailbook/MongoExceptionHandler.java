@@ -25,6 +25,6 @@ public class MongoExceptionHandler {
     @ExceptionHandler(value = MongoWriteException.class)
     public ErrorResponse handleMongoWriteException(MongoWriteException e) {
         logger.error(e.getMessage(), e);
-        return new ErrorResponse(MessageConstant.SOMETHING_WENT_WRONG_WITH_MONGO, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ErrorResponse(MessageConstant.SOMETHING_WENT_WRONG_WITH_MONGO + " " + e.getCode(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
