@@ -22,6 +22,11 @@ class BookCommandServiceImpl implements BookCommandService {
     public void updateBooks(List<BookDto> books) {
         bookDao.updateBooks(books);
     }
+
+    @Override
+    public void updateBookStock(String id, int quantity) {
+        bookDao.updateBookStock(id, quantity);
+    }
 }
 
 

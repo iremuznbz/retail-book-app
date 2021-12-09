@@ -13,4 +13,6 @@ public interface BookDao {
     Object findById(String bookId);
 
     void updateBooks(List<BookDto> books);
+
+    void updateBookStock(String id, int quantity);
 }

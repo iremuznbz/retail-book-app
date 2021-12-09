@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -49,5 +50,12 @@ public class BookDaoImpl implements BookDao {
         List<BookEntity> entities = new ArrayList<>();
         books.forEach(b -> entities.add((BookEntity) bookMapper.mapToEntity(b)));
         bookRepository.saveAll(entities);
+    }
+
+    @Override
+    public void updateBookStock(String id, int quantity) {
+        Optional<BookEntity> b = bookRepository.findById(id);
+        b.ifPresent(bookEntity -> bookEntity.setQuantity(quantity));
+        bookRepository.save(b.get());
     }
 }

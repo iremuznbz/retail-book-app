@@ -8,4 +8,6 @@ public interface BookCommandService {
     String createBook(BookDto bookDto);
 
     void updateBooks(List<BookDto> books);
+
+    void updateBookStock(String id, int quantity);
 }

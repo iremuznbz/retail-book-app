@@ -4,10 +4,7 @@ import com.getir.retailbook.book.dto.BookCreateRequest;
 import com.getir.retailbook.book.service.BookCommandService;
 import com.getir.retailbook.book.service.BookQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book")
@@ -25,6 +22,11 @@ public class BookController {
     @PostMapping
     public String createBook(@RequestBody BookCreateRequest request){
         return bookCommandService.createBook(bookMapper.fromRequestToDto(request));
+    }
+
+    @PutMapping
+    public void updateBookStock(@RequestBody BookUpdateRequest request){
+        bookCommandService.updateBookStock(request.getBookId(), request.getQuantity());
     }
 
 }
