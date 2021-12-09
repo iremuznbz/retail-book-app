@@ -16,7 +16,7 @@ public class BusinessExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = BusinessException.class)
     public ErrorResponse defaultErrorHandler(HttpServletRequest req, BusinessException e) {
-        logger.error(e.getMessage(), e);
-        return new ErrorResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        logger.error(e.getMsg(), e);
+        return new ErrorResponse(e.getMsg(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
