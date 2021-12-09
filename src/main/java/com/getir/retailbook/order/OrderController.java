@@ -29,12 +29,7 @@ public class OrderController {
 
     @PostMapping // TODO: atomicity order yaratbook stock update et
     public String createOrder(@RequestBody OrderCreateRequest orderCreateRequest){
-        try {
             return orderCommandService.createOrder(orderMapper.fromCreateRequestToDto(orderCreateRequest));
-        } catch (BusinessException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @GetMapping("/{orderId}")

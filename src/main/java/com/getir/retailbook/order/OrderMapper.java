@@ -1,25 +1,36 @@
 package com.getir.retailbook.order;
 
+import com.getir.retailbook.book.BookEntity;
+import com.getir.retailbook.book.BookMapper;
+import com.getir.retailbook.book.dto.BookDto;
+import com.getir.retailbook.book.service.BookQueryService;
 import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.customer.CustomerMapper;
 import com.getir.retailbook.customer.service.CustomerQueryService;
+import com.getir.retailbook.order.dto.Item;
 import com.getir.retailbook.order.dto.OrderCreateRequest;
 import com.getir.retailbook.order.dto.OrderDto;
 import com.getir.retailbook.order.dto.OrderListResponse;
 import com.getir.retailbook.util.EntityMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Component
 public class OrderMapper implements EntityMapper {
-    @Autowired
-    private CustomerQueryService customerQueryService;
+    private final CustomerQueryService customerQueryService;
+    private final BookQueryService bookQueryService;
+    private final CustomerMapper customerMapper;
+    private final BookMapper bookMapper;
 
-    @Autowired
-    private CustomerMapper customerMapper;
+    public OrderMapper(CustomerQueryService customerQueryService, BookQueryService bookQueryService, CustomerMapper customerMapper, BookMapper bookMapper) {
+        this.customerQueryService = customerQueryService;
+        this.bookQueryService = bookQueryService;
+        this.customerMapper = customerMapper;
+        this.bookMapper = bookMapper;
+    }
 
     @Override
     public Object mapToEntity(Object dto) {
@@ -27,6 +38,13 @@ public class OrderMapper implements EntityMapper {
         OrderEntity o = new OrderEntity();
         CustomerEntity c = (CustomerEntity) customerMapper.mapToEntity(customerQueryService.findCustomerById(orderDto.getCustomerid()));
         o.setCustomer(c);
+        List<BookEntity> bookEntities = new ArrayList<>();
+        for(Item item : ((OrderDto) dto).getBooks()){
+            BookDto bookDto = bookQueryService.findById(item.getBookId());
+            bookDto.setQuantity(item.getQuantity());
+            bookEntities.add((BookEntity) bookMapper.mapToEntity(bookDto));
+        }
+        o.setBooks(bookEntities);
         return o;
     }
 
@@ -35,7 +53,9 @@ public class OrderMapper implements EntityMapper {
         OrderEntity o = (OrderEntity) entity;
         OrderDto orderDto = new OrderDto();
         orderDto.setCustomerid(o.getCustomer().getId());
-        orderDto.setBooks(o.getItems());
+        List<Item> books = new ArrayList<>();
+        o.getBooks().stream().forEach(bookEntity -> books.add(new Item(bookEntity.getId(), bookEntity.getQuantity())));
+        orderDto.setBooks(books);
         return orderDto;
     }
 

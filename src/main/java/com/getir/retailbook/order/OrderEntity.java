@@ -1,10 +1,9 @@
 package com.getir.retailbook.order;
 
 import com.getir.retailbook.BaseEntity;
+import com.getir.retailbook.book.BookEntity;
 import com.getir.retailbook.customer.CustomerEntity;
-import com.getir.retailbook.order.dto.Item;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotEmpty;
@@ -17,11 +16,10 @@ public class OrderEntity extends BaseEntity {
     private String id;
 
     @NotNull
-    @DBRef
     private CustomerEntity customer;
 
     @NotEmpty
-    private List<Item> items;
+    private List<BookEntity> books;
 
     public String getId() {
         return id;
@@ -39,11 +37,11 @@ public class OrderEntity extends BaseEntity {
         this.customer = customer;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<BookEntity> getBooks() {
+        return books;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setBooks(List<BookEntity> books) {
+        this.books = books;
     }
 }
