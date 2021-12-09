@@ -1,6 +1,7 @@
 package com.getir.retailbook.order.dto;
 
 public class Item {
+
     private String bookId;
     private int quantity;
 
@@ -24,4 +25,5 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
 }

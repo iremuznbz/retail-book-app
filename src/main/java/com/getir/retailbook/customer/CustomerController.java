@@ -9,6 +9,7 @@ import com.getir.retailbook.order.dto.OrderListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,12 +26,12 @@ public class CustomerController {
     private CustomerMapper customerMapper;
 
     @PostMapping
-    public String createCustomer(@RequestBody CustomerCreateRequest customerCreateRequest){
+    public String createCustomer(@RequestBody @Valid CustomerCreateRequest customerCreateRequest){
         return customerCommandService.createCustomer(customerMapper.fromCreateRequestToDto(customerCreateRequest));
     }
 
 
-    @GetMapping("/orders/{id}") // TODO:
+    @GetMapping("/orders/{id}")
     public OrderListResponse getCustomerOrders(@RequestParam CustomerOrderListRequest customerOrderListRequest){
         List<OrderDto> l = customerQueryService.findOrderListByCustomerID(customerOrderListRequest.toCustomerId());
         OrderListResponse resp= new OrderListResponse();

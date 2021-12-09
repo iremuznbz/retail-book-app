@@ -2,6 +2,7 @@ package com.getir.retailbook.customer;
 
 import com.getir.retailbook.BaseEntity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -19,6 +20,7 @@ public class CustomerEntity extends BaseEntity {
     private String surname;
 
     @NotNull
+    @Indexed(unique=true)
     private String email;
 
     public String getId() {

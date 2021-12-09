@@ -51,6 +51,7 @@ public class OrderMapper implements EntityMapper {
     public Object mapToDto(Object entity) {
         OrderEntity o = (OrderEntity) entity;
         OrderDto orderDto = new OrderDto();
+        orderDto.setId(o.getId());
         orderDto.setCustomerid(o.getCustomer().getId());
         orderDto.setItems(((OrderEntity) entity).getItems());
         orderDto.setCreatedAt(((OrderEntity) entity).getCreatedAt().toLocalDate());

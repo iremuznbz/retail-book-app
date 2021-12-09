@@ -1,16 +1,14 @@
 package com.getir.retailbook.customer.dto;
 
 
-import com.getir.retailbook.customer.CustomerEntity;
-
 import java.io.Serializable;
-import java.util.StringJoiner;
 
 public class CustomerDto implements Serializable {
 
     private String id;
     private String name;
     private String surname;
+    private String email;
 
     public CustomerDto(){
 
@@ -37,13 +35,23 @@ public class CustomerDto implements Serializable {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", CustomerEntity.class.getSimpleName() + "[", "]")
-                .add("id='" + id + "'")
-                .add("name='" + name + "'")
-                .add("surname='" + surname + "'")
-                .toString();
+    public void setId(String id) {
+        this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

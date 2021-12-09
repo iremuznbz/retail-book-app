@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class OrderController {
     @Autowired
     private OrderMapper orderMapper;
 
-    @PostMapping // TODO: atomicity order yaratbook stock update et
-    public String createOrder(@RequestBody OrderCreateRequest orderCreateRequest){
+    @PostMapping
+    public String createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest){
             return orderCommandService.createOrder(orderMapper.fromCreateRequestToDto(orderCreateRequest));
     }
 

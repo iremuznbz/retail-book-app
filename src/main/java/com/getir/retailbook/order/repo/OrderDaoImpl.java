@@ -1,5 +1,6 @@
 package com.getir.retailbook.order.repo;
 
+import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.order.OrderEntity;
 import com.getir.retailbook.order.OrderMapper;
 import com.getir.retailbook.order.dto.OrderDto;
@@ -24,7 +25,9 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public OrderDto findOrderById(String id) {
         Optional<OrderEntity> o = orderRepository.findById(id);
-        return (OrderDto) orderMapper.mapToDto(o);
+        if(o.isPresent()) return (OrderDto) orderMapper.mapToDto(o.get());
+        else throw new BusinessException("O004", "Order does not exist");
+
     }
 
     @Override

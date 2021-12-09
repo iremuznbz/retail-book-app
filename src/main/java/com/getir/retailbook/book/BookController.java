@@ -6,6 +6,8 @@ import com.getir.retailbook.book.service.BookQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -20,12 +22,12 @@ public class BookController {
     private BookMapper bookMapper;
 
     @PostMapping
-    public String createBook(@RequestBody BookCreateRequest request){
+    public String createBook(@RequestBody @Valid BookCreateRequest request){
         return bookCommandService.createBook(bookMapper.fromRequestToDto(request));
     }
 
     @PutMapping
-    public void updateBookStock(@RequestBody BookUpdateRequest request){
+    public void updateBookStock(@RequestBody @Valid BookUpdateRequest request){
         bookCommandService.updateBookStock(request.getBookId(), request.getQuantity());
     }
 
