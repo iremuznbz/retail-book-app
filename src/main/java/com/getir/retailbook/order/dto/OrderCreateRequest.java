@@ -1,6 +1,7 @@
 package com.getir.retailbook.order.dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 public class OrderCreateRequest {
@@ -8,7 +9,7 @@ public class OrderCreateRequest {
     @NotBlank
     private String customerId;
 
-    @NotBlank
+    @NotEmpty
     private List<Item> books;
 
     public String getCustomerId() {

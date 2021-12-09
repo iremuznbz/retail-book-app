@@ -4,6 +4,7 @@ import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.order.OrderEntity;
 import com.getir.retailbook.order.OrderMapper;
 import com.getir.retailbook.order.dto.OrderDto;
+import com.getir.retailbook.statistics.OrderStatisticDto;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -37,5 +38,10 @@ public class OrderDaoImpl implements OrderDao {
         for(OrderEntity o : orderList)
             dtoList.add((OrderDto) orderMapper.mapToDto(o));
         return dtoList;
+    }
+
+    @Override
+    public List<OrderStatisticDto> getCustomerStatisticsById(String customerId) {
+        return orderRepository.getCustomerStatisticsById(customerId);
     }
 }

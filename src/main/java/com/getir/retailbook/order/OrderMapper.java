@@ -41,7 +41,7 @@ public class OrderMapper implements EntityMapper {
         List<Item> items = new ArrayList<>();
         for(Item item : ((OrderDto) dto).getItems()){
             BookDto bookDto = bookQueryService.findById(item.getBookId());
-            Item i = new Item(bookDto.getId(),item.getQuantity(), bookDto.getAmount().multiply(new BigDecimal(bookDto.getQuantity())));
+            Item i = new Item(bookDto.getId(),item.getQuantity(), bookDto.getAmount().multiply(new BigDecimal(item.getQuantity())));
             items.add(i);
         }
         o.setItems(items);

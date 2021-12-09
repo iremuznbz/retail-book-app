@@ -1,11 +1,16 @@
 package com.getir.retailbook.order.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public class Item {
 
+    @NotNull
     private String bookId;
+    @Positive
     private int quantity;
+    @Positive
     private BigDecimal totalAmount;
 
     public Item(String id, Integer quantity, BigDecimal totalAmount) {

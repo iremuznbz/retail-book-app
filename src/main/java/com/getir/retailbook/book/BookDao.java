@@ -10,7 +10,7 @@ public interface BookDao {
 
     List<BookDto> findAllBooks(List<Item> books);
 
-    Object findById(String bookId);
+    BookDto findById(String bookId);
 
     void updateBooks(List<BookDto> books);
 

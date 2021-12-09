@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 @Document("book")
@@ -21,9 +22,11 @@ public class BookEntity extends BaseEntity {
     private String author;
 
     @NotNull
+    @Positive
     private Integer quantity;
 
     @NotNull
+    @Positive
     private BigDecimal amount;
 
     public String getId() {

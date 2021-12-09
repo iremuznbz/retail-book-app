@@ -23,7 +23,7 @@ class BookQueryServiceImpl implements BookQueryService {
 
     @Override
     public BookDto findById(String bookId) {
-        return (BookDto) bookDao.findById(bookId);
+        return  bookDao.findById(bookId);
     }
 }
 
