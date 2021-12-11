@@ -2,11 +2,15 @@ package com.getir.retailbook.book;
 
 import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.book.dto.BookDto;
+import com.getir.retailbook.order.dto.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -92,6 +96,77 @@ public class BookDaoTest {
 
         assertTrue(actualMessage.contains(expectedMessage));
         verify(bookRepository).findById("61b2847bef63d6130a1cea36");
+
+    }
+
+    @Test
+    void updateBookStock_IfBookDoesNotExist_ThenThrowsException(){
+        Optional<BookEntity> t = Optional.empty();
+        Mockito.when(bookRepository.findById("61b2847bef63d6130a1cea36")).thenReturn(t);
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            bookDao.updateBookStock("61b2847bef63d6130a1cea36",5);
+        });
+
+        String expectedMessage = "Book not found.";
+        String actualMessage = exception.getMsg();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+        verify(bookRepository).findById("61b2847bef63d6130a1cea36");
+
+    }
+
+    @Test
+    void updateBooks_IfBookDtoHasElements_ThenUpdates(){
+        List<BookDto> list = new ArrayList<>();
+        list.add(bookDto("61b2847bef63d6130a1cea36", "Balikci ve oglu", new BigDecimal(12.50), 1, "Zulfu Livaneli"));
+        list.add(bookDto("61b2497bef63d6130a1cea37", "Körlük", new BigDecimal(26.40), 1, "José Saramago"));
+
+        bookDao.updateBooks(list);
+
+        verify(bookRepository).saveAll(Mockito.anyCollection());
+
+    }
+
+    @Test
+    void findAllBooks_IfBooksFound_ThenReturnBookDtos(){
+        List<String> ids = Arrays.asList("61b2847bef63d6130a1cea36","61b2497bef63d6130a1cea37");
+        Mockito.when(bookRepository.findAllByIdAndQuantityIsGreaterThanZero(ids)).thenReturn(Arrays.asList(createEntity("61b2847bef63d6130a1cea36"),createEntity("61b2497bef63d6130a1cea37")));
+
+
+        List<Item> list = new ArrayList<>();
+        list.add(createItem("61b2847bef63d6130a1cea36",4, new BigDecimal(12.50)));
+        list.add(createItem("61b2497bef63d6130a1cea37",2, new BigDecimal(26.50)));
+
+        List<BookDto> bookDtos = bookDao.findAllBooks(list);
+
+        assertEquals(2,bookDtos.size());
+        verify(bookRepository).findAllByIdAndQuantityIsGreaterThanZero(ids);
+
+    }
+
+    private BookEntity createEntity(String id) {
+        BookEntity entity = new BookEntity();
+        entity.setId(id);
+        return entity;
+    }
+
+    private Item createItem(String id, int quantity, BigDecimal amount) {
+        return new Item(id,quantity,amount);
+    }
+
+    @Test
+    void updateBookStock_IfBookDoesExist_ThenUpdates(){
+        BookEntity bookEntity = new BookEntity();
+        bookEntity.setId("61b2847bef63d6130a1cea36");
+
+        Optional<BookEntity> t = Optional.of(bookEntity);
+        Mockito.when(bookRepository.findById("61b2847bef63d6130a1cea36")).thenReturn(t);
+
+        bookDao.updateBookStock("61b2847bef63d6130a1cea36",5);
+
+        verify(bookRepository).findById("61b2847bef63d6130a1cea36");
+        verify(bookRepository).save(bookEntity);
 
     }
 
