@@ -12,4 +12,6 @@ public interface OrderDao {
     List<OrderDto> listOrdersByInterval(LocalDateTime startDate, LocalDateTime endDate);
 
     List<OrderStatisticDto> getCustomerStatisticsById(String customerId);
+
+    List<OrderDto> findOrderListByCustomerID(String customerId);
 }

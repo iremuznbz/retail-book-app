@@ -5,7 +5,7 @@ import com.getir.retailbook.order.OrderEntity;
 import com.getir.retailbook.order.OrderMapper;
 import com.getir.retailbook.order.dto.OrderDto;
 import com.getir.retailbook.statistics.OrderStatisticDto;
-import org.bson.Document;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -43,7 +43,15 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderStatisticDto> getCustomerStatisticsById(String customerId) {
-        List<OrderStatisticDto> l = orderRepository.getCustomerStatisticsById(customerId);
-        return null;
+        AggregationResults<OrderStatisticDto> l = orderRepository.getCustomerStatisticsById(customerId);
+        return l.getMappedResults();
+    }
+
+    @Override
+    public List<OrderDto> findOrderListByCustomerID(String customerId) {
+        List<OrderEntity> l = orderRepository.findOrderEntitiesByCustomerId(customerId);
+        List<OrderDto> ol = new ArrayList<>();
+        l.forEach(o -> ol.add((OrderDto) orderMapper.mapToDto(o)));
+        return ol;
     }
 }

@@ -36,10 +36,6 @@ public class OrderCommandServiceImpl implements OrderCommandService {
     @Override
     @Transactional
     public String createOrder(OrderDto orderDto) {
-        CustomerDto c = customerQueryService.findCustomerById(orderDto.getCustomerid());
-        if(c == null)
-            throw new BusinessException("O001", "Cannot create order with non existing customer.");
-
         List<BookDto> books = bookQueryService.findAllBooks(orderDto.getItems());
 
         if(books.size() != orderDto.getItems().size())

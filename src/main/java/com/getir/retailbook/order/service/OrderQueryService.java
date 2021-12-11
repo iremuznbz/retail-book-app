@@ -9,4 +9,6 @@ public interface OrderQueryService {
     OrderDto findOrderById(String id);
 
     List<OrderDto> listOrdersByInterval(LocalDate startDate, LocalDate endDate);
+
+    List<OrderDto> findOrderListByCustomerID(String customerId);
 }

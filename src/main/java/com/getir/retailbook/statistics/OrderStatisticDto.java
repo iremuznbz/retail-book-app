@@ -1,36 +1,33 @@
 package com.getir.retailbook.statistics;
 
-import java.io.Serializable;
-import java.util.List;
+public class OrderStatisticDto  {
 
-public class OrderStatisticDto implements Serializable {
-
-    long month;
-    List<String> totalAmount;
-    long totalOrderCount;
+    String id;
+    String totalAmount;
+    int totalOrderCount;
     long totalBookCount;
 
-    public long getMonth() {
-        return month;
+    public String getId() {
+        return id;
     }
 
-    public void setMonth(long month) {
-        this.month = month;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<String> getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(List<String> totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public long getTotalOrderCount() {
+    public int getTotalOrderCount() {
         return totalOrderCount;
     }
 
-    public void setTotalOrderCount(long totalOrderCount) {
+    public void setTotalOrderCount(int totalOrderCount) {
         this.totalOrderCount = totalOrderCount;
     }
 

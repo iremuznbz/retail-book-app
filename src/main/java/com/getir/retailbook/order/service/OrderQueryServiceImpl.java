@@ -28,4 +28,9 @@ public class OrderQueryServiceImpl implements OrderQueryService{
         LocalDateTime endDateTime = LocalDateTime.of(endDate.getYear(), endDate.getMonth(), endDate.getDayOfMonth(), 0, 0);
         return orderDao.listOrdersByInterval(startDateTime, endDateTime);
     }
+
+    @Override
+    public List<OrderDto> findOrderListByCustomerID(String customerId) {
+        return orderDao.findOrderListByCustomerID(customerId);
+    }
 }

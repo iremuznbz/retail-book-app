@@ -20,24 +20,17 @@ import java.util.List;
 
 @Component
 public class OrderMapper implements EntityMapper {
-    private final CustomerQueryService customerQueryService;
     private final BookQueryService bookQueryService;
-    private final CustomerMapper customerMapper;
-    private final BookMapper bookMapper;
 
     public OrderMapper(CustomerQueryService customerQueryService, BookQueryService bookQueryService, CustomerMapper customerMapper, BookMapper bookMapper) {
-        this.customerQueryService = customerQueryService;
         this.bookQueryService = bookQueryService;
-        this.customerMapper = customerMapper;
-        this.bookMapper = bookMapper;
     }
 
     @Override
     public Object mapToEntity(Object dto) {
         OrderDto orderDto = (OrderDto) dto;
         OrderEntity o = new OrderEntity();
-        CustomerEntity c = (CustomerEntity) customerMapper.mapToEntity(customerQueryService.findCustomerById(orderDto.getCustomerid()));
-        o.setCustomer(c);
+        o.setCustomerId(orderDto.getCustomerid());
         List<Item> items = new ArrayList<>();
         for(Item item : ((OrderDto) dto).getItems()){
             BookDto bookDto = bookQueryService.findById(item.getBookId());
@@ -53,7 +46,7 @@ public class OrderMapper implements EntityMapper {
         OrderEntity o = (OrderEntity) entity;
         OrderDto orderDto = new OrderDto();
         orderDto.setId(o.getId());
-        orderDto.setCustomerid(o.getCustomer().getId());
+        orderDto.setCustomerid(o.getCustomerId());
         orderDto.setItems(((OrderEntity) entity).getItems());
         orderDto.setCreatedAt(((OrderEntity) entity).getCreatedAt().toLocalDate());
         return orderDto;

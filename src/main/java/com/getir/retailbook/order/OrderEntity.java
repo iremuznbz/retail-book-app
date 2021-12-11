@@ -1,7 +1,6 @@
 package com.getir.retailbook.order;
 
 import com.getir.retailbook.BaseEntity;
-import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.order.dto.Item;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +15,7 @@ public class OrderEntity extends BaseEntity {
     private String id;
 
     @NotNull
-    private CustomerEntity customer;
+    private String customerId;
 
     @NotEmpty
     private List<Item> items;
@@ -29,12 +28,12 @@ public class OrderEntity extends BaseEntity {
         this.id = id;
     }
 
-    public CustomerEntity getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public List<Item> getItems() {
