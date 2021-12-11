@@ -1,10 +1,17 @@
 package com.getir.retailbook.book;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 
 public class BookUpdateRequest implements Serializable {
 
+    @NotNull
+    @NotEmpty
     private String bookId;
+
+    @PositiveOrZero
     private int quantity;
 
     public String getBookId() {

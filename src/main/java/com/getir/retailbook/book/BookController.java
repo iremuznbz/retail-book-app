@@ -2,8 +2,6 @@ package com.getir.retailbook.book;
 
 import com.getir.retailbook.book.dto.BookCreateRequest;
 import com.getir.retailbook.book.service.BookCommandService;
-import com.getir.retailbook.book.service.BookQueryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,14 +10,13 @@ import javax.validation.Valid;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired
-    private BookCommandService bookCommandService;
+    private final BookCommandService bookCommandService;
+    private final BookMapper bookMapper;
 
-    @Autowired
-    private BookQueryService bookQueryService;
-
-    @Autowired
-    private BookMapper bookMapper;
+    public BookController(BookCommandService bookCommandService, BookMapper bookMapper) {
+        this.bookCommandService = bookCommandService;
+        this.bookMapper = bookMapper;
+    }
 
     @PostMapping
     public String createBook(@RequestBody @Valid BookCreateRequest request){
