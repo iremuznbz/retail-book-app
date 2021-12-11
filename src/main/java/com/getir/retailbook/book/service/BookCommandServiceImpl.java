@@ -2,16 +2,19 @@ package com.getir.retailbook.book.service;
 
 import com.getir.retailbook.book.BookDao;
 import com.getir.retailbook.book.dto.BookDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class BookCommandServiceImpl implements BookCommandService {
+public class BookCommandServiceImpl implements BookCommandService {
 
-    @Autowired
-    private BookDao bookDao;
+
+    private final BookDao bookDao;
+
+    public BookCommandServiceImpl(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
 
     @Override
     public String createBook(BookDto bookDto) {

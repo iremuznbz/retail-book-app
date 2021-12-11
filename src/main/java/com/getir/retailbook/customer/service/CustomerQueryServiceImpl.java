@@ -14,11 +14,6 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
     @Autowired
     private CustomerDao customerDao;
 
-    @Override // TODO: Find mi get mi olmali
-    public List<OrderDto> findOrderListByCustomerID(String id) {
-        return null;
-    }
-
     @Override
     public CustomerDto findCustomerById(String id) {
         return customerDao.findCustomerById(id);

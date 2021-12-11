@@ -1,5 +1,6 @@
 package com.getir.retailbook.customer.repo;
 
+import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.customer.CustomerMapper;
 import com.getir.retailbook.customer.dto.CustomerDto;
@@ -26,6 +27,9 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public CustomerDto findCustomerById(String id) {
         Optional<CustomerEntity> c = customerRepository.findById(id);
+        if (c.isEmpty())
+            throw new BusinessException("C001", "Customer does not exist.");
+
         return (CustomerDto) customerMapper.mapToDto(c.get());
     }
 }

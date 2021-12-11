@@ -1,5 +1,6 @@
 package com.getir.retailbook.book;
 
+import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.book.dto.BookDto;
 import com.getir.retailbook.order.dto.Item;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,8 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public String createBook(BookDto bookDto) {
+        Optional<BookEntity> book = bookRepository.findByName(bookDto.getName());
+        if(book.isPresent()) throw new BusinessException("B002","Book cannot be created with same name.");
         BookEntity b = (BookEntity) bookMapper.mapToEntity(bookDto);
         return bookRepository.save(b).getId();
     }
@@ -41,7 +44,8 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public BookDto findById(String bookId) {
-        final BookEntity entity = bookRepository.findById(bookId).get();
+        Optional<BookEntity> entity = bookRepository.findById(bookId);
+        if(entity.isEmpty()) throw new BusinessException("B001", "Book not found.");
         return (BookDto) bookMapper.mapToDto(entity);
     }
 
@@ -55,7 +59,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public void updateBookStock(String id, int quantity) {
         Optional<BookEntity> b = bookRepository.findById(id);
-        b.ifPresent(bookEntity -> bookEntity.setQuantity(quantity));
+        if(b.isEmpty()) throw new BusinessException("B001", "Book not found.");
         bookRepository.save(b.get());
     }
 }
