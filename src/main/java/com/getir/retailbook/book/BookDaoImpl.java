@@ -46,7 +46,7 @@ public class BookDaoImpl implements BookDao {
     public BookDto findById(String bookId) {
         Optional<BookEntity> entity = bookRepository.findById(bookId);
         if(entity.isEmpty()) throw new BusinessException("B001", "Book not found.");
-        return (BookDto) bookMapper.mapToDto(entity);
+        return (BookDto) bookMapper.mapToDto(entity.get());
     }
 
     @Override
