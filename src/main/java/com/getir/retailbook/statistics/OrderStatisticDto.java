@@ -1,11 +1,8 @@
 package com.getir.retailbook.statistics;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
 import java.util.List;
 
-@Document
 public class OrderStatisticDto implements Serializable {
 
     long month;
