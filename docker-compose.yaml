@@ -1,0 +1,10 @@
+version: "2.0"
+services:
+  retail-book:
+    build: .
+    image: getir/retail-book
+    container_name: retail-book
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATA_MONGODB_.HOST=mongodb
