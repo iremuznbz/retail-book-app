@@ -4,7 +4,6 @@ import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.customer.CustomerMapper;
 import com.getir.retailbook.customer.dto.CustomerDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -12,11 +11,13 @@ import java.util.Optional;
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
 
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
-    @Autowired
-    private CustomerMapper customerMapper;
+    public CustomerDaoImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
+        this.customerRepository = customerRepository;
+        this.customerMapper = customerMapper;
+    }
 
     @Override
     public String createCustomer(CustomerDto customerDto) {
