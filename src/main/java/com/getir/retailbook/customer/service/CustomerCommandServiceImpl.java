@@ -4,7 +4,6 @@ import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.customer.CustomerEntity;
 import com.getir.retailbook.customer.repo.CustomerDaoImpl;
 import com.getir.retailbook.customer.dto.CustomerDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,8 +11,11 @@ import java.util.Optional;
 @Service
 public class CustomerCommandServiceImpl implements CustomerCommandService {
 
-    @Autowired
-    private CustomerDaoImpl customerDao;
+    private final CustomerDaoImpl customerDao;
+
+    public CustomerCommandServiceImpl(CustomerDaoImpl customerDao) {
+        this.customerDao = customerDao;
+    }
 
 
     @Override
