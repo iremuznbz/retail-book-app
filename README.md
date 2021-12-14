@@ -8,17 +8,23 @@ Java (min SDK 11)
 MongoDb   
 Docker
 
-To run on local host VM arguments; -Dspring.profiles.active=local
 
 ###Docker
+Firstly, running mongodb is required to build docker image of application for tests.
+
 > docker build . -t getir/retail-book
-> docker run -p 8080:8080 getir/retail-book
 
-Also you need running mongodb in docker.
-Getting docker image with this command:
-> docker pull mongo
+> docker-compose -f docker-compose.yaml up -d
 
-More information: https://hub.docker.com/_/mongo?tab=description
+To start:
+> docker-compose start 
+
+To stop:    
+> docker-compose stop 
+
+To remove:
+> docker-compose down -v  
+
 
 ###Swagger
 Swagger url: http://localhost:8080/swagger-ui/#/
@@ -26,7 +32,7 @@ Swagger url: http://localhost:8080/swagger-ui/#/
 
 ###Postman
  Postman Collection can be found under this directory:
-    /postman/Getir.postman_collection.json
+    /postman/Getir_retail-book.postman_collection.json
     
 ###MongoDb
 To run application you need a running mongodb. (Also to be able to run tests.)
