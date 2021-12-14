@@ -33,4 +33,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
         return (CustomerDto) customerMapper.mapToDto(c.get());
     }
+
+    @Override
+    public Optional<CustomerEntity> findCustomerByEmail(String email) {
+        return customerRepository.findByEmail(email);
+    }
 }
