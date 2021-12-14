@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "051210d9-837f-4fd6-bf8d-8f1faabc66c3",
+		"name": "Getir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "Create customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTUzMTI2MiwiaWF0IjoxNjM5NTEzMjYyfQ.ABWq4lwwMiPObQGrvU6dh0dTtmHjNlLP7HcnbwkLX6pzAytq_FImvy93wvh1UdEWKyL1ek1rli4nGwRCpl8kyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lady\",\n\t\"surname\": \"Gaga\",\n\t\"email\": \"irem@kjsdhf.com\"\n\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get orders by customer id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "Create book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Veronika Olmek Istiyor\",\n\t\"author\": \"Paula Coelho\",\n\t\"quantity\": \"15\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update book stock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bookId\": \"61b268b32d3eb47283901b01\",\n\t\"quantity\": 15\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Get order by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customerId\": \"61ab63ac82864e181341fe01\",\n\t\"books\": [\n\t\t{\n\t\t\t\"bookId\":\"61b25f70b3d2135e0b0cf874\",\n\t\t\t\"quantity\": \"2\"\n\t\t}\n\t]\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/order/61b2732c964cda55570f7a22",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"61b2732c964cda55570f7a22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by time interval",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/order/search?startDate=2021-04-10&endDate=2021-12-13",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"search"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-04-10"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-12-13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTQ0MzY5MCwiaWF0IjoxNjM5NDI1NjkwfQ.ZkQUVp9gvFGupP4gSCUAK7cfleO_P4wDQhkDyeX93pEdzjGy5fFfOgd7OfRoPLZ7djGV0oeu47t7pCByX10Djg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customerId\": \"61b28088d5d37d67dbd6cbba\",\n\t\"books\": [\n\t\t{\n\t\t\t\"bookId\":\"61b2847bef63d6130a1cea36\",\n\t\t\t\"quantity\": \"2\"\n\t\t},\n\t\t\t{\n\t\t\t\"bookId\":\"61b28489ef63d6130a1cea37\",\n\t\t\t\"quantity\": \"1\"\n\t\t}\n\t]\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/order",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "statistics",
+			"item": [
+				{
+					"name": "Get statistics by customer id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/statistics/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statistics",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "df825bc9-75fd-4f57-ac5f-e1e56eab60ff",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"admin\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/authentication/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authentication",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
