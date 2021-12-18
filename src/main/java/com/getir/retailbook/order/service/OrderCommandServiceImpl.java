@@ -4,13 +4,11 @@ import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.book.dto.BookDto;
 import com.getir.retailbook.book.service.BookCommandService;
 import com.getir.retailbook.book.service.BookQueryService;
-import com.getir.retailbook.customer.dto.CustomerDto;
-import com.getir.retailbook.customer.service.CustomerQueryService;
 import com.getir.retailbook.order.OrderEntity;
 import com.getir.retailbook.order.OrderMapper;
 import com.getir.retailbook.order.dto.Item;
 import com.getir.retailbook.order.dto.OrderDto;
-import com.getir.retailbook.order.repo.OrderRepository;
+import com.getir.retailbook.order.repo.OrderDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,17 +17,15 @@ import java.util.List;
 @Service
 public class OrderCommandServiceImpl implements OrderCommandService {
 
-    private final OrderRepository orderRepository;
+    private final OrderDao orderDao;
     private final BookQueryService bookQueryService;
     private final BookCommandService bookCommandService;
-    private final CustomerQueryService customerQueryService;
     private final OrderMapper orderMapper;
 
-    public OrderCommandServiceImpl(OrderRepository orderRepository, BookQueryService bookQueryService, BookCommandService bookCommandService, CustomerQueryService customerQueryService, OrderMapper orderMapper) {
-        this.orderRepository = orderRepository;
+    public OrderCommandServiceImpl(OrderDao orderDao, BookQueryService bookQueryService, BookCommandService bookCommandService, OrderMapper orderMapper) {
+        this.orderDao = orderDao;
         this.bookQueryService = bookQueryService;
         this.bookCommandService = bookCommandService;
-        this.customerQueryService = customerQueryService;
         this.orderMapper = orderMapper;
     }
 
@@ -50,6 +46,6 @@ public class OrderCommandServiceImpl implements OrderCommandService {
 
         bookCommandService.updateBooks(books);
         OrderEntity order = (OrderEntity) orderMapper.mapToEntity(orderDto);
-        return orderRepository.save(order).getId();
+        return orderDao.save(order);
     }
 }

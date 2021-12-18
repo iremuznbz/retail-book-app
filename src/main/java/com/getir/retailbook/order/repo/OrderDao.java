@@ -1,5 +1,6 @@
 package com.getir.retailbook.order.repo;
 
+import com.getir.retailbook.order.OrderEntity;
 import com.getir.retailbook.order.dto.OrderDto;
 import com.getir.retailbook.statistics.OrderStatisticDto;
 
@@ -14,4 +15,6 @@ public interface OrderDao {
     List<OrderStatisticDto> getCustomerStatisticsById(String customerId);
 
     List<OrderDto> findOrderListByCustomerID(String customerId);
+
+    String save(OrderEntity order);
 }

@@ -1,13 +1,11 @@
 package com.getir.retailbook.order;
 
 
-import com.getir.retailbook.BusinessException;
 import com.getir.retailbook.order.dto.OrderCreateRequest;
 import com.getir.retailbook.order.dto.OrderDto;
 import com.getir.retailbook.order.dto.OrderListResponse;
 import com.getir.retailbook.order.service.OrderCommandService;
 import com.getir.retailbook.order.service.OrderQueryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +17,16 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
-    private OrderCommandService orderCommandService;
+    private final OrderCommandService orderCommandService;
+    private final OrderQueryService orderQueryService;
+    private final OrderMapper orderMapper;
 
-    @Autowired
-    private OrderQueryService orderQueryService;
+    public OrderController(OrderCommandService orderCommandService, OrderQueryService orderQueryService, OrderMapper orderMapper) {
+        this.orderCommandService = orderCommandService;
+        this.orderQueryService = orderQueryService;
+        this.orderMapper = orderMapper;
+    }
 
-    @Autowired
-    private OrderMapper orderMapper;
 
     @PostMapping
     public String createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest){

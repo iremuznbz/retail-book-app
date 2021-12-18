@@ -2,9 +2,10 @@ package com.getir.retailbook.order.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Item {
+public class Item implements Serializable {
 
     @NotNull
     private String bookId;
@@ -12,6 +13,10 @@ public class Item {
     private int quantity;
     @Positive
     private BigDecimal totalAmount;
+
+    public Item() {
+
+    }
 
     public Item(String id, Integer quantity, BigDecimal totalAmount) {
         this.bookId = id;

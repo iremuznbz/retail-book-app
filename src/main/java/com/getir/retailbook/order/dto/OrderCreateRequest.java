@@ -1,15 +1,14 @@
 package com.getir.retailbook.order.dto;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 public class OrderCreateRequest {
 
-    @NotBlank
+    @NotEmpty(message = "Customer id cannot be null")
     private String customerId;
 
-    @NotEmpty
+    @NotEmpty(message = "Book list cannot be empty")
     private List<Item> books;
 
     public String getCustomerId() {

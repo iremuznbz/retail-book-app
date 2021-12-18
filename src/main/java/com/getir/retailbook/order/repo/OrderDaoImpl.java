@@ -54,4 +54,9 @@ public class OrderDaoImpl implements OrderDao {
         l.forEach(o -> ol.add((OrderDto) orderMapper.mapToDto(o)));
         return ol;
     }
+
+    @Override
+    public String save(OrderEntity order) {
+        return orderRepository.save(order).getId();
+    }
 }
