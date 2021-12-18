@@ -33,8 +33,8 @@ public class CustomerController {
 
 
     @GetMapping("/orders/{id}")
-    public OrderListResponse getCustomerOrders(@RequestParam CustomerOrderListRequest customerOrderListRequest){
-        List<OrderDto> l = orderQueryService.findOrderListByCustomerID(customerOrderListRequest.toCustomerId());
+    public OrderListResponse getCustomerOrders(@PathVariable String id ){
+        List<OrderDto> l = orderQueryService.findOrderListByCustomerID(id);
         OrderListResponse resp= new OrderListResponse();
         resp.setOrderList(l);
         return resp;

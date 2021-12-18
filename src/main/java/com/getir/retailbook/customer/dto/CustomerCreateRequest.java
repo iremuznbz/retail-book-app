@@ -1,17 +1,19 @@
 package com.getir.retailbook.customer.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class CustomerCreateRequest implements Serializable {
 
-    @NotNull
+    @NotNull(message = "Name cannot be null")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Surname cannot be null")
     private String surname;
 
-    @NotNull
+    @NotNull(message = "Email cannot be null")
+    @Email
     private String email;
 
     public String getName() {
