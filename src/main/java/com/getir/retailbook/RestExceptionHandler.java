@@ -39,7 +39,7 @@ public class RestExceptionHandler {
 
         String validationErrors = "";
         for(ObjectError o : ex.getBindingResult().getAllErrors())
-            validationErrors += o.getDefaultMessage();
+            validationErrors += o.getDefaultMessage() + ",";
 
         return new ErrorResponse(validationErrors, HttpStatus.BAD_REQUEST);
     }
