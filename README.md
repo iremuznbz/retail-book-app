@@ -3,13 +3,13 @@
 Online book retail application to deliver items from its one centralized warehouse to their
 customers within the same day.
 
-###Requirements
+### Requirements
 Java (min SDK 11)   
 MongoDb   
 Docker
 
 
-###Docker
+### Docker
 Firstly, running mongodb is required to build docker image of application for tests.
 
 > docker build . -t getir/retail-book
@@ -26,22 +26,22 @@ To remove:
 > docker-compose down -v  
 
 
-###Swagger
+### Swagger
 Swagger url: http://localhost:8080/swagger-ui/#/
 
 
-###Postman
+### Postman
  Postman Collection can be found under this directory:
     /postman/Getir_retail-book.postman_collection.json
     
-###MongoDb
+### MongoDb
 To run application you need a running mongodb. (Also to be able to run tests.)
 <p>Run with this command.
 
 > systemctl start mongod
 
 
-#Retail Book
+# Retail Book
 
 The application consist of five main parts.
 
@@ -56,20 +56,20 @@ This service returns jwt token to be able to request other apis. Jwt token shoul
 Note: To make it simple dummy user repository is used.It has username,password values in DummyUserRepository class.
 To create authenticated user you can add in this map.
 
-###2.Customer
+### 2.Customer
 * Persist new customers
 * Query all orders of the customer
 
 
-###3.Book
+### 3.Book
 * Persist new items
 * Update items quantity
 
-###4.Order
+### 4.Order
 * Persist new orders
 * Query order by id and time interval
 
-###5.Statistics 
+### 5.Statistics 
 * Serve customer monthly statistics
 
 
