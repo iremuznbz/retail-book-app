@@ -16,7 +16,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTUzMTI2MiwiaWF0IjoxNjM5NTEzMjYyfQ.ABWq4lwwMiPObQGrvU6dh0dTtmHjNlLP7HcnbwkLX6pzAytq_FImvy93wvh1UdEWKyL1ek1rli4nGwRCpl8kyQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTc4NzM5MiwiaWF0IjoxNjM5NzY5MzkyfQ.SSMld21xQARB-ZK8TaSWD37Q-BH-_7Q0BQrTYtQMKo3HYfE3U8SFlF7vk-WcdBMwXZkWiOydoF0EvMTHHJSO1g",
 									"type": "string"
 								}
 							]
@@ -53,6 +53,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTg4MDQwNCwiaWF0IjoxNjM5ODYyNDA0fQ.ty2VPPtTUmCpEKG3Dha6vEaZ1mePJLe8Jq8_VTFZbsPHVudD-bIxZUmis7LN6EE5ezbIAnSdEUCfiWadTOxkaQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -60,13 +70,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/customer",
+							"raw": "localhost:8080/customer/orders/61bce5c81e74a322432c85ee",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"customer"
+								"customer",
+								"orders",
+								"61bce5c81e74a322432c85ee"
 							]
 						}
 					},
@@ -85,7 +97,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTg0MjgzMSwiaWF0IjoxNjM5ODI0ODMxfQ.LGuwv0gUBNPCan4vwgiFQY10T9MnEXyfyCKcXzKMfVAiUHyEMlvC6bfQ-tcAPjR1zgfehxG_3zgl4QLKco_Bxw",
 									"type": "string"
 								}
 							]
@@ -101,7 +113,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Veronika Olmek Istiyor\",\n\t\"author\": \"Paula Coelho\",\n\t\"quantity\": \"15\"\n}"
+							"raw": "{\n\t\"name\": \"Mindfullness\",\n\t\"author\": \"Jon Kabat\",\n\t\"quantity\": \"55\",\n\t\"amount\": 22.90\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/book",
@@ -171,7 +183,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTQ0Nzk0MCwiaWF0IjoxNjM5NDI5OTQwfQ.5O9TqIGQcGltdyJWl7iakVMo8vitsYUuiINmDlsNMzTYWIVtLaI38apeOXzu3LVxDA3ekx1CYOwXXQHpG8MmUw",
 									"type": "string"
 								}
 							]
@@ -261,7 +273,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTQ0MzY5MCwiaWF0IjoxNjM5NDI1NjkwfQ.ZkQUVp9gvFGupP4gSCUAK7cfleO_P4wDQhkDyeX93pEdzjGy5fFfOgd7OfRoPLZ7djGV0oeu47t7pCByX10Djg",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTg0MzE2MywiaWF0IjoxNjM5ODI1MTYzfQ.y35u3fy28hya7UEiuXMj7X5Bh3BgXX6FpFiqNq-PaeCCElO0Lvmxd1IL_jKLyBNc6dH4IZPzwcQ3gL9PAHaHKQ",
 									"type": "string"
 								}
 							]
@@ -277,7 +289,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"customerId\": \"61b28088d5d37d67dbd6cbba\",\n\t\"books\": [\n\t\t{\n\t\t\t\"bookId\":\"61b2847bef63d6130a1cea36\",\n\t\t\t\"quantity\": \"2\"\n\t\t},\n\t\t\t{\n\t\t\t\"bookId\":\"61b28489ef63d6130a1cea37\",\n\t\t\t\"quantity\": \"1\"\n\t\t}\n\t]\n\t\n}"
+							"raw": "{\n\t\"customerId\": \"61bce5c81e74a322432c85ee\",\n\t\"books\": [\n\t\t{\n\t\t\t\"bookId\":\"61bdbf1339e77553af9f6e0b\",\n\t\t\t\"quantity\": \"14\"\n\t\t}\n\t]\n\t\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/order",
@@ -305,7 +317,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTA5NzQ4NywiaWF0IjoxNjM5MDc5NDg3fQ.OKy6f1QcMESzTw5iPiGKtc-Ga79XZiRs7NuUN6dKRvu06vEB3lj51KeUQmCxfw-GycftONFgvDsTzh25N1s7sg",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTQ0MzY5MCwiaWF0IjoxNjM5NDI1NjkwfQ.ZkQUVp9gvFGupP4gSCUAK7cfleO_P4wDQhkDyeX93pEdzjGy5fFfOgd7OfRoPLZ7djGV0oeu47t7pCByX10Djg",
 									"type": "string"
 								}
 							]
@@ -324,14 +336,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/statistics/",
+							"raw": "localhost:8080/statistics/61b28088d5d37d67dbd6cbba",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"statistics",
-								""
+								"61b28088d5d37d67dbd6cbba"
 							]
 						}
 					},
