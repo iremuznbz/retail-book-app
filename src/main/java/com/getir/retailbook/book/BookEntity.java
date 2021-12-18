@@ -2,6 +2,7 @@ package com.getir.retailbook.book;
 
 import com.getir.retailbook.BaseEntity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -68,4 +69,5 @@ public class BookEntity extends BaseEntity {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
 }

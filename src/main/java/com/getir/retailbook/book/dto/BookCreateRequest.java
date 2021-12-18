@@ -1,5 +1,6 @@
 package com.getir.retailbook.book.dto;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -7,17 +8,17 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class BookCreateRequest implements Serializable {
-    @NotNull
+    @NotEmpty(message = "Name cannot be null")
     private String name;
 
-    @NotNull
+    @NotEmpty(message = "Author cannot be null")
     private String author;
 
-    @NotNull
-    @PositiveOrZero
+    @NotNull(message = "Quantity cannot be null")
+    @PositiveOrZero(message = "Quantity must be greater than or equal to 0")
     private int quantity;
 
-    @NotNull
+    @NotNull(message = "Amount cannot be null and negative")
     @Positive
     private BigDecimal amount;
 

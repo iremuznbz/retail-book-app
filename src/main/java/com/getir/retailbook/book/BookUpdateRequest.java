@@ -7,11 +7,10 @@ import java.io.Serializable;
 
 public class BookUpdateRequest implements Serializable {
 
-    @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Book id cannot be null")
     private String bookId;
 
-    @PositiveOrZero
+    @PositiveOrZero(message = "Quantity cannot be null and negative")
     private int quantity;
 
     public String getBookId() {
